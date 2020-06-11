@@ -1,0 +1,21 @@
+import java.io.*;
+public class Example10_7 {
+    public static void main(String args[]){
+        File file=new File("Student.txt");
+        String content[]={"商品列表:","电视机,2567元/台","洗衣机,3562.元/台","冰箱,6573元/台"};
+        try(BufferedWriter outTwo= new BufferedWriter(new FileWriter(file));
+            BufferedReader inTwo= new BufferedReader(new FileReader(file))){
+            for(String str:content){
+                outTwo.write(str);
+                outTwo.newLine();
+            }
+            //outTwo.flush();   //flush
+            String s=null;
+            while((s=inTwo.readLine())!=null){
+                System.out.println(s);
+            }
+        }catch(IOException e){
+            System.out.println(e);
+        }
+    }
+}
